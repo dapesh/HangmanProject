@@ -6,4 +6,10 @@ class HangmanGame:
         self.guessed_letters = []
 
     def display_word(self):
-        return ""
+        display = []
+        for letter in self.word:
+            if letter in self.guessed_letters:
+                display.append(letter)
+            else:
+                display.append("_")
+        return " ".join(display)
