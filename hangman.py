@@ -34,9 +34,25 @@ class HangmanGame:
         self.lives = 6
 
     def process_guess(self, guess):
-        # TODO_NotImplementedYet
-        pass
+        """Handle a guessed letter."""
+        guess = guess.lower()
+        if guess in self.word:
+            self.guessed_letters.append(guess)
+            if all(
+                letter in self.guessed_letters or letter == " "
+                for letter in self.word
+            ):
+                return "win"
+            return "correct"
+        else:
+            self.lives -= 1
+            if self.lives <= 0:
+                return "lose"
+            return "wrong"
 
     def process_timeout(self):
-        # TODO_NotImplementedYet
-        pass
+        """Handle timeout event."""
+        self.lives -= 1
+        if self.lives <= 0:
+            return "lose"
+        return "timeout"
