@@ -1,5 +1,5 @@
 """Hangman Game with two difficulty levels and 15-second timer per guess."""
-
+import random
 WORDS = ["python", "java", "hangman"]
 PHRASES = ["open source", "unit testing", "test driven"]
 
@@ -19,8 +19,13 @@ class HangmanGame:
         return " ".join(display)
     
     def choose_word(self, level):
-        # TODO_NotImplementedYet
-        return ""
+        """Choose a word based on level."""
+        if level == "1":
+            return random.choice(WORDS)
+        elif level == "2":
+            return random.choice(PHRASES)
+        else:
+            raise ValueError("Invalid level")
     
     
     def initialize_game(self, level):
